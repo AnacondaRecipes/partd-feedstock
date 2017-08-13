@@ -36,6 +36,12 @@ about:
   license: BSD 3-Clause
   license_file: LICENSE.txt
   summary: Data structure for on-disk shuffle operations
+  description: |
+    Partd stores key-value pairs. Values are raw bytes. It excels at shuffling
+    operations.
+  doc_url: https://pypi.python.org/pypi/partd/
+  doc_source_url: https://github.com/dask/partd/blob/master/README.rst
+  dev_url: https://github.com/dask/partd
 
 extra:
   recipe-maintainers:
