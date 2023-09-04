@@ -1,5 +1,5 @@
 {% set name = "partd" %}
-{% set version = "1.2.0" %}
+{% set version = "1.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/partd-{{ version }}.tar.gz
-  sha256: aa67897b84d522dcbc86a98b942afab8c6aa2f7f677d904a616b74ef5ddbc3eb
+  sha256: aa0ff35dbbcc807ae374db56332f4c1b39b46f67bf2975f5151e0b4186aed0d5
 
 build:
-  noarch: python
-  number: 1
-  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed . -vv
+  number: 0
+  skip: true  # [py<37]
+  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed --no-build-isolation . -vv
 
 requirements:
   host:
@@ -21,9 +21,12 @@ requirements:
     - setuptools
     - wheel
   run:
-    - python >=3.5
+    - python
     - locket
     - toolz
+  run_constrained:
+    - numpy >= 1.9.0
+    - pandas >=0.19.0
 
 test:
   imports:
@@ -42,8 +45,7 @@ about:
   description: |
     Partd stores key-value pairs. Values are raw bytes. It excels at shuffling
     operations.
-  doc_url: https://pypi.python.org/pypi/partd/
-  doc_source_url: https://github.com/dask/partd/blob/master/README.rst
+  doc_url: https://pypi.org/pypi/partd/
   dev_url: https://github.com/dask/partd
 
 extra:
