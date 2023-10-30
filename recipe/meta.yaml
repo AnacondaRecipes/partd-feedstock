@@ -18,8 +18,8 @@ build:
 
 requirements:
   build:
-    - patch     # [unix]
-    - m2-patch  # [win]
+    - patch     # [unix and py==312]
+    - m2-patch  # [win and py==312]
   host:
     - python
     - pip
