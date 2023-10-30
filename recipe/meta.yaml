@@ -1,5 +1,5 @@
 {% set name = "partd" %}
-{% set version = "1.4.0" %}
+{% set version = "1.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,9 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/partd-{{ version }}.tar.gz
-  sha256: aa0ff35dbbcc807ae374db56332f4c1b39b46f67bf2975f5151e0b4186aed0d5
+  sha256: 56c25dd49e6fea5727e731203c466c6e092f308d8f0024e199d02f6aa2167f67
+  patches:                           # [py==312]
+    - patches/0000-3.12-compat.patch # [py==312]
 
 build:
   number: 0
@@ -15,6 +17,9 @@ build:
   script: {{ PYTHON }} -m pip install --no-deps --ignore-installed --no-build-isolation . -vv
 
 requirements:
+  build:
+    - patch     # [unix]
+    - m2-patch  # [win]
   host:
     - python
     - pip
