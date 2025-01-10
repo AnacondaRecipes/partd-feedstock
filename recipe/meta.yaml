@@ -8,8 +8,6 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/partd-{{ version }}.tar.gz
   sha256: d022c33afbdc8405c226621b015e8067888173d85f7f5ecebb3cafed9a20f02c
-  # patches:                           # [py==312]
-  #   - patches/0000-3.12-compat.patch # [py==312]
 
 build:
   number: 0
